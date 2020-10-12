@@ -7,13 +7,11 @@ DIMENSION = 9
 SQUERE_SIZE = int(WIDTH/9)
 BIG_SQUERE_SIZE = int(WIDTH/3)
 
-# numbers
 '''
 centers numbers in rectangle
 '''
 FIXED_ROW = 11
 FIXED_COL = 18
-
 
 '''
 draws board only
@@ -55,7 +53,7 @@ def uncheck_previous(selected, screen):
         s.set_alpha(255) # transparency if 0 = completly transparent max = 255
         s.fill(pygame.Color('white'))
         screen.blit(s, (col*SQUERE_SIZE, row*SQUERE_SIZE))
-    
+
 '''
 selects squere 
 '''
@@ -66,6 +64,7 @@ def select_squere(selected, squere_selected, board):
     if len(selected) > 1:
         selected.pop(0)
     return selected[-1]
+
 '''
 highlights selected squere
 '''
@@ -87,7 +86,6 @@ def main():
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     game_font = pygame.font.SysFont('dejavusans', 55)
     screen.fill(pygame.Color('white'))
-
 
     while running:
         for event in pygame.event.get():
