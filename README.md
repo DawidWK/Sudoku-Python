@@ -1,6 +1,6 @@
 # Sudoku-Python
 
-MADE IN PROGRESS
+WORK IN PROGRESS
 
  Made from scratch with pygame. 
 
