@@ -98,6 +98,7 @@ def main():
                 squere_selected = (row, col)
                 highlight_squere(screen, selected, squere_selected, gs.board)
             if event.type == pygame.KEYDOWN and squere_selected != ():
+                # find out different solution(?)
                 if event.key == pygame.K_0:
                     move = sudokuEngine.Move(squere_selected, gs.board, 0)
                     gs.make_move(move)
