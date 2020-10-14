@@ -1,4 +1,7 @@
 # Sudoku-Python
+
+MADE IN PROGRESS
+
  Made from scratch with pygame. 
 
  TODO:
