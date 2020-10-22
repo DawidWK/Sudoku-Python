@@ -20,6 +20,26 @@ class GameState():
                 self.board[move.squere_row][move.squere_col] = '--'
             else:
                 self.board[move.squere_row][move.squere_col] = move.number + '-'
+    
+    def valid_move(self, move):
+        moves = []
+        # flag to check if same number is already on same row and col
+        is_on_board = False
+        directions = [(-1, 0), (1, 0), (0,-1), (0,1)]
+        for d in directions:
+            for i in range(1, 9):
+                tmp_move_row = move.squere_row + d[0]*i
+                tmp_move_col = move.squere_col + d[1]*i
+                if 0 <= tmp_move_row <= 8 and 0 <= tmp_move_col <= 8: # on board
+                    if self.board[tmp_move_row][tmp_move_col][0] == move.number:
+                        is_on_board = True
+                        break
+        # check in "big squere"
+        # IN PROGRESS
+        
+        if is_on_board:
+            return False
+        return True
 
 class Move():
     def __init__(self, squere, board, number):

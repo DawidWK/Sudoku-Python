@@ -7,11 +7,13 @@ DIMENSION = 9
 SQUERE_SIZE = int(WIDTH/9)
 BIG_SQUERE_SIZE = int(WIDTH/3)
 
+# numbers
 '''
 centers numbers in rectangle
 '''
 FIXED_ROW = 11
 FIXED_COL = 18
+
 
 '''
 draws board only
@@ -53,18 +55,16 @@ def uncheck_previous(selected, screen):
         s.set_alpha(255) # transparency if 0 = completly transparent max = 255
         s.fill(pygame.Color('white'))
         screen.blit(s, (col*SQUERE_SIZE, row*SQUERE_SIZE))
-
+    
 '''
 selects squere 
 '''
 def select_squere(selected, squere_selected, board):
     if check_if_inmutable(squere_selected, board):
         selected.append(squere_selected)
-        print(selected)
     if len(selected) > 1:
         selected.pop(0)
     return selected[-1]
-
 '''
 highlights selected squere
 '''
@@ -87,6 +87,7 @@ def main():
     game_font = pygame.font.SysFont('dejavusans', 55)
     screen.fill(pygame.Color('white'))
 
+
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -98,47 +99,56 @@ def main():
                 squere_selected = (row, col)
                 highlight_squere(screen, selected, squere_selected, gs.board)
             if event.type == pygame.KEYDOWN and squere_selected != ():
-                # find out different solution(?)
+                # is there any way to loop through numbers? change it later
                 if event.key == pygame.K_0:
                     move = sudokuEngine.Move(squere_selected, gs.board, 0)
                     gs.make_move(move)
                     highlight_squere(screen, selected, squere_selected, gs.board)
                 if event.key == pygame.K_1:
                     move = sudokuEngine.Move(squere_selected, gs.board, 1)
-                    gs.make_move(move)
-                    highlight_squere(screen, selected, squere_selected, gs.board)
+                    if gs.valid_move(move):
+                        gs.make_move(move)
+                        highlight_squere(screen, selected, squere_selected, gs.board)
                 if event.key == pygame.K_2:
                     move = sudokuEngine.Move(squere_selected, gs.board, 2)
-                    gs.make_move(move)
-                    highlight_squere(screen, selected, squere_selected, gs.board)
+                    if gs.valid_move(move):
+                        gs.make_move(move)
+                        highlight_squere(screen, selected, squere_selected, gs.board)
                 if event.key == pygame.K_3:
                     move = sudokuEngine.Move(squere_selected, gs.board, 3)
-                    gs.make_move(move)
-                    highlight_squere(screen, selected, squere_selected, gs.board)
+                    if gs.valid_move(move):
+                        gs.make_move(move)
+                        highlight_squere(screen, selected, squere_selected, gs.board)
                 if event.key == pygame.K_4:
                     move = sudokuEngine.Move(squere_selected, gs.board, 4)
-                    gs.make_move(move)
-                    highlight_squere(screen, selected, squere_selected, gs.board)
+                    if gs.valid_move(move):
+                        gs.make_move(move)
+                        highlight_squere(screen, selected, squere_selected, gs.board)
                 if event.key == pygame.K_5:
                     move = sudokuEngine.Move(squere_selected, gs.board, 5)
-                    gs.make_move(move)
-                    highlight_squere(screen, selected, squere_selected, gs.board)
+                    if gs.valid_move(move):
+                        gs.make_move(move)
+                        highlight_squere(screen, selected, squere_selected, gs.board)
                 if event.key == pygame.K_6:
                     move = sudokuEngine.Move(squere_selected, gs.board, 6)
-                    gs.make_move(move)
-                    highlight_squere(screen, selected, squere_selected, gs.board)
+                    if gs.valid_move(move):
+                        gs.make_move(move)
+                        highlight_squere(screen, selected, squere_selected, gs.board)
                 if event.key == pygame.K_7:
                     move = sudokuEngine.Move(squere_selected, gs.board, 7)
-                    gs.make_move(move)
-                    highlight_squere(screen, selected, squere_selected, gs.board)
+                    if gs.valid_move(move):
+                        gs.make_move(move)
+                        highlight_squere(screen, selected, squere_selected, gs.board)
                 if event.key == pygame.K_8:
                     move = sudokuEngine.Move(squere_selected, gs.board, 8)
-                    gs.make_move(move)
-                    highlight_squere(screen, selected, squere_selected, gs.board)
+                    if gs.valid_move(move):
+                        gs.make_move(move)
+                        highlight_squere(screen, selected, squere_selected, gs.board)
                 if event.key == pygame.K_9:
                     move = sudokuEngine.Move(squere_selected, gs.board, 9)
-                    gs.make_move(move)
-                    highlight_squere(screen, selected, squere_selected, gs.board)
+                    if gs.valid_move(move):
+                        gs.make_move(move)
+                        highlight_squere(screen, selected, squere_selected, gs.board)
 
         draw_numbers(screen, gs.board, game_font)
         draw_board(screen)
